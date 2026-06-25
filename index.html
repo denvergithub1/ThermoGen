@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThermoGen Biotech | Caribbean Extremophile Research</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --deep:    #0a1628;
+    --navy:    #0f2240;
+    --teal:    #0d7a6e;
+    --aqua:    #00c9a7;
+    --mist:    #e8f4f1;
+    --ivory:   #f7f5f0;
+    --warm:    #c9a96e;
+    --text:    #1a2b3c;
+    --mid:     #4a6070;
+    --light:   #8fa3b0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--ivory);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 201, 167, 0.15);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--aqua); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--aqua); }
+
+  .nav-cta {
+    background: var(--aqua);
+    color: var(--deep) !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    color: var(--deep);
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.85; color: var(--deep) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Animated thermal rings */
+  .rings {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 201, 167, 0.12);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  .ring:nth-child(1) { width: 200px; height: 200px; animation-delay: 0s; border-color: rgba(0,201,167,0.3); }
+  .ring:nth-child(2) { width: 350px; height: 350px; animation-delay: 1s; }
+  .ring:nth-child(3) { width: 500px; height: 500px; animation-delay: 2s; }
+  .ring:nth-child(4) { width: 650px; height: 650px; animation-delay: 3s; }
+  .ring:nth-child(5) { width: 800px; height: 800px; animation-delay: 4s; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.03); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--aqua);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 1.1;
+    color: #fff;
+    max-width: 800px;
+    position: relative; z-index: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--aqua);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    line-height: 1.7;
+    position: relative; z-index: 1;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem;
+    position: relative; z-index: 1;
+  }
+
+  .btn-primary {
+    background: var(--aqua);
+    color: var(--deep);
+    padding: 0.85rem 2.2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+    padding: 0.85rem 2.2rem;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--aqua); color: var(--aqua); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--aqua), transparent);
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  /* ── MISSION ── */
+  .mission { background: var(--ivory); }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .mission-text p {
+    color: var(--mid);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .mission-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--deep);
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    border-bottom: 3px solid var(--aqua);
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--aqua);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── FOCUS AREAS ── */
+  .focus { background: var(--deep); }
+
+  .focus .section-title { color: #fff; }
+  .focus .section-label { color: var(--aqua); }
+
+  .focus-intro {
+    color: rgba(255,255,255,0.5);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 4rem;
+    font-size: 1.05rem;
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .focus-card {
+    background: var(--navy);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .focus-card:hover { background: #162e50; }
+
+  .focus-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .focus-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+  }
+
+  .focus-card p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  .focus-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--aqua);
+    border: 1px solid rgba(0,201,167,0.3);
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  /* ── PIPELINE ── */
+  .pipeline { background: var(--mist); }
+
+  .pipeline-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .pipeline-steps::before {
+    content: '';
+    position: absolute;
+    top: 2.2rem;
+    left: 2rem; right: 2rem;
+    height: 1px;
+    background: linear-gradient(to right, var(--teal), var(--aqua), var(--teal));
+  }
+
+  .pipeline-step {
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .step-dot {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: #fff;
+    font-weight: 700;
+    position: relative; z-index: 1;
+    border: 3px solid var(--mist);
+  }
+
+  .pipeline-step h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--deep);
+    margin-bottom: 0.6rem;
+  }
+
+  .pipeline-step p {
+    font-size: 0.82rem;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ── TEAM ── */
+  .team { background: var(--ivory); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .team-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  }
+
+  .team-photo {
+    width: 100%; height: 220px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 60px;
+    background: linear-gradient(to top, rgba(255,255,255,0.08), transparent);
+  }
+
+  .team-initials {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(0,201,167,0.5);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--aqua);
+    letter-spacing: 0.05em;
+  }
+
+  .team-info { padding: 1.8rem; }
+
+  .team-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+
+  .team-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--deep);
+    margin-bottom: 0.6rem;
+  }
+
+  .team-bio {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .team-links {
+    display: flex; gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .team-link {
+    font-size: 0.75rem;
+    color: var(--teal);
+    text-decoration: none;
+    border: 1px solid rgba(13,122,110,0.25);
+    padding: 0.25rem 0.7rem;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .team-link:hover { background: var(--teal); color: #fff; }
+
+  /* ── PARTNERS ── */
+  .partners { background: var(--deep); padding: 4rem 2rem; }
+
+  .partners-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .partners-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .partners-logos {
+    display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;
+  }
+
+  .partner-badge {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+    cursor: default;
+  }
+
+  .partner-badge:hover { color: rgba(255,255,255,0.55); }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--navy); }
+
+  .contact .section-title { color: #fff; }
+  .contact .section-label { color: var(--aqua); }
+
+  .contact-sub {
+    color: rgba(255,255,255,0.5);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--aqua);
+  }
+
+  .form-group select option { background: var(--navy); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: var(--aqua);
+    color: var(--deep);
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: opacity 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .form-submit:hover { opacity: 0.85; }
+
+  .contact-info { padding-top: 0.5rem; }
+
+  .contact-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .contact-item:first-child { padding-top: 0; }
+
+  .contact-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .contact-detail h4 {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--aqua);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-detail p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  .nda-note {
+    margin-top: 2rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(0,201,167,0.06);
+    border: 1px solid rgba(0,201,167,0.2);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+
+  .nda-note strong { color: var(--aqua); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-logo span { color: var(--aqua); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .mission-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .focus-grid { grid-template-columns: 1fr; }
+    .pipeline-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .pipeline-steps::before { display: none; }
+    .team-grid { grid-template-columns: 1fr; max-width: 420px; }
+  }
+
+  @media (max-width: 600px) {
+    .mission-stats { grid-template-columns: 1fr 1fr; }
+    .pipeline-steps { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ring, .scroll-line { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Thermo<span>Gen</span> Biotech</div>
+  <ul class="nav-links">
+    <li><a href="#mission">About</a></li>
+    <li><a href="#focus">Research</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact" class="nav-cta">Partner With Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+  <p class="hero-eyebrow">Caribbean Extremophile Research &nbsp;·&nbsp; Est. 2025</p>
+  <h1>Where the Earth's heat<br>becomes <em>tomorrow's medicine</em></h1>
+  <p class="hero-sub">We are a biotechnology company unlocking the biological potential hidden inside Caribbean hot spring ecosystems — a frontier the industry has barely touched.</p>
+  <div class="hero-actions">
+    <a href="#focus" class="btn-primary">Our Research Areas</a>
+    <a href="#contact" class="btn-ghost">Partner With Us</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-text">
+        <p class="section-label">Our Mission</p>
+        <h2 class="section-title">Turning extreme biology<br>into <em>real solutions</em></h2>
+        <p>Caribbean hot springs host microbial communities that have spent thousands of years evolving in conditions hostile to almost every other form of life. That pressure produces biology that is genuinely unlike anything found in conventional environments.</p>
+        <p>We are building systematic methods to study, collect, and translate that biology into high-value products for the pharmaceutical, agricultural, and biotechnology sectors — while working closely with Caribbean governments and research partners to do it responsibly.</p>
+        <p>Our work is proprietary and conducted under formal IP protection. Specific methods and target organisms are disclosed only under NDA to qualified partners.</p>
+      </div>
+      <div class="mission-stats">
+        <div class="stat-card">
+          <div class="stat-number">$14B</div>
+          <div class="stat-label">Projected global plasmid DNA market by 2033</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">~0</div>
+          <div class="stat-label">Prior systematic studies of Caribbean hot spring microbiomes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Independent product verticals from a single source environment</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1st</div>
+          <div class="stat-label">To systematically access this unexplored biological territory</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section class="focus" id="focus">
+  <div class="container">
+    <p class="section-label">Research Focus</p>
+    <h2 class="section-title">Three verticals.<br>One source environment.</h2>
+    <p class="focus-intro">Our platform is built on a single, underexplored ecosystem that yields opportunities across multiple high-value markets. We do not discuss specific methods or organisms publicly prior to IP filing.</p>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <span class="focus-icon">🧬</span>
+        <h3>Novel Plasmid DNA</h3>
+        <p>Extremophile microorganisms carry plasmids encoding traits absent in conventional lab strains. We are developing a catalogue of these sequences for biopharmaceutical, gene therapy, and research applications.</p>
+        <span class="focus-tag">Biopharma · Gene Therapy</span>
+      </div>
+      <div class="focus-card">
+        <span class="focus-icon">💊</span>
+        <h3>Antibiotic Discovery</h3>
+        <p>Microbes in competitive extreme environments produce antimicrobial compounds to survive. We are screening novel isolates for activity against drug-resistant pathogens including those on WHO priority pathogen lists.</p>
+        <span class="focus-tag">AMR · Drug Discovery</span>
+      </div>
+      <div class="focus-card">
+        <span class="focus-icon">🌿</span>
+        <h3>Environmental Applications</h3>
+        <p>Microbial communities from sulfur-rich, metal-laden spring environments have demonstrated capabilities relevant to bioremediation and sustainable industrial processes. Details under NDA.</p>
+        <span class="focus-tag">Bioremediation · Industry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="pipeline" id="pipeline">
+  <div class="container">
+    <p class="section-label">Development Pipeline</p>
+    <h2 class="section-title">From spring to <em>shelf</em></h2>
+    <div class="pipeline-steps">
+      <div class="pipeline-step">
+        <div class="step-dot">01</div>
+        <h4>Collection &amp; Characterisation</h4>
+        <p>In-field sampling and sequencing to build a proprietary microbial database unique to Caribbean geothermal environments.</p>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-dot">02</div>
+        <h4>Isolation &amp; Culture</h4>
+        <p>Pure-culture isolation and strain profiling. Preservation in controlled storage for downstream processing and IP documentation.</p>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-dot">03</div>
+        <h4>Product Development</h4>
+        <p>Extraction, purification, and characterisation of target compounds. Lab validation of efficacy and stability under industry standards.</p>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-dot">04</div>
+        <h4>Commercialisation</h4>
+        <p>Licensing, direct sale, and partnership agreements with biotech firms, academic institutions, and pharmaceutical partners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="container">
+    <p class="section-label">The Team</p>
+    <h2 class="section-title">Built for this <em>frontier</em></h2>
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-initials">CF</div>
+        </div>
+        <div class="team-info">
+          <p class="team-role">Co-Founder &amp; CEO</p>
+          <h3 class="team-name">Co-Founder One</h3>
+          <p class="team-bio">Leads strategy, partnerships, and scientific direction. Background in microbiology and Caribbean environmental research. Driving the company's IP strategy and institutional relationships.</p>
+          <div class="team-links">
+            <a href="#contact" class="team-link">LinkedIn</a>
+            <a href="#contact" class="team-link">Email</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-initials">CS</div>
+        </div>
+        <div class="team-info">
+          <p class="team-role">Co-Founder &amp; COO</p>
+          <h3 class="team-name">Co-Founder Two</h3>
+          <p class="team-bio">Oversees operations, regulatory affairs, and field research logistics. Deep experience in biotechnology project management and building research partnerships across the Caribbean region.</p>
+          <div class="team-links">
+            <a href="#contact" class="team-link">LinkedIn</a>
+            <a href="#contact" class="team-link">Email</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-initials">CT</div>
+        </div>
+        <div class="team-info">
+          <p class="team-role">Chief Technology Officer</p>
+          <h3 class="team-name">CTO Name</h3>
+          <p class="team-bio">Leads laboratory systems, bioinformatics pipeline, and product development. Expertise in molecular biology, 16S sequencing analysis, and scaling microbial processes from bench to production.</p>
+          <div class="team-links">
+            <a href="#contact" class="team-link">LinkedIn</a>
+            <a href="#contact" class="team-link">Email</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS BAR -->
+<div class="partners">
+  <div class="partners-inner">
+    <span class="partners-label">Seeking partnerships with</span>
+    <div class="partners-logos">
+      <span class="partner-badge">Biotech Firms</span>
+      <span class="partner-badge">Academic Institutions</span>
+      <span class="partner-badge">Pharma Partners</span>
+      <span class="partner-badge">Impact Investors</span>
+      <span class="partner-badge">Government Bodies</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's build something <em>together</em></h2>
+    <p class="contact-sub">We welcome inquiries from research partners, investors, and institutions. Detailed scientific information is shared under mutual NDA.</p>
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="jane@institution.edu" required>
+        </div>
+        <div class="form-group">
+          <label>Organisation</label>
+          <input type="text" placeholder="University / Company / Fund">
+        </div>
+        <div class="form-group">
+          <label>I am interested in</label>
+          <select>
+            <option value="">Select one…</option>
+            <option>Research Partnership</option>
+            <option>Investment Opportunity</option>
+            <option>Plasmid DNA Licensing</option>
+            <option>Antibiotic Discovery Collaboration</option>
+            <option>Environmental Applications</option>
+            <option>Academic Collaboration</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us briefly about your interest or organisation…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div class="contact-detail">
+            <h4>Location</h4>
+            <p>Caribbean Region<br>With partners in North America &amp; Europe</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div class="contact-detail">
+            <h4>Email</h4>
+            <p>info@thermogenbiotech.com<br>partnerships@thermogenbiotech.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🔒</span>
+          <div class="contact-detail">
+            <h4>Confidentiality</h4>
+            <p>All serious enquiries can be conducted under a mutual NDA. We will not share specific methods, organisms, or proprietary data without formal agreement.</p>
+          </div>
+        </div>
+        <div class="nda-note">
+          <strong>Note on IP:</strong> This website intentionally does not disclose our specific research methods, target organisms, or proprietary processes. We are in the process of filing patents. Full details are available to qualified partners under a signed mutual NDA.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Thermo<span>Gen</span> Biotech</div>
+  <span class="footer-copy">© 2025 ThermoGen Biotech. All rights reserved. All methods and processes are proprietary and patent-pending.</span>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Message Sent';
+    btn.style.background = '#0d7a6e';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Highlight nav link on scroll
+  const sections = document.querySelectorAll('section[id], .partners');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id || '';
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}`
+        ? 'var(--aqua)' : '';
+    });
+  });
+</script>
+</body>
+</html>
