@@ -901,7 +901,7 @@ function legalPage(kind){
     ["Confidentiality", `<p>Please do not send confidential or proprietary information through this site. Our methods, data and materials are confidential. Technical detail is shared only with partners under a signed non-disclosure agreement, and nothing on this site grants any licence or right to them.</p>`],
     ["Our content", `<p>The text, design and graphics on this site belong to ${op} unless stated otherwise. You may share a link to a page or quote a short passage with credit. Please ask before reusing more.</p>`],
     ["Fair use", `<p>Do not use automated tools to copy the site in bulk, try to get around its limits, or interfere with how it works.</p>`],
-    ["Links to other sites", `<p>We link to other websites, including our sister company's. We are not responsible for their content or practices.</p>`],
+    ["Links to other sites", `<p>We link to other websites, including our partner company's. We are not responsible for their content or practices.</p>`],
     ["No guarantee, and limits on responsibility", `<p>The site is provided "as is". To the extent the law allows, ${op} is not responsible for losses caused by using the site or relying on its information. Nothing here limits any right you have under the law that cannot be limited.</p>`],
     ["Changes and contact", `<p>We may change these terms. The date at the top shows the latest version. Questions: ${mail}.</p>`]
   ];
@@ -1190,7 +1190,7 @@ const SITE = {
   other:{name:"ThermoDen", url:THERMODEN_URL, line:"ThermoGen is the research and development company in the ThermoDen family. Our consulting company is"},
   footBlurb:"An early-stage research and development company turning the biology of Caribbean geothermal springs into tools, data and partnerships.",
   foundersLede:"Two founders, one aim: do rigorous science in a part of the world where it has barely been done, and make sure it benefits the region.",
-  foundersTogether:"Denver sets the scientific direction and partnerships. Jamille keeps the work organised, compliant and moving. Together they run ThermoGen and its sister consulting company, ThermoDen.",
+  foundersTogether:"Denver sets the scientific direction and partnerships. Jamille keeps the work organised, compliant and moving. Together they run ThermoGen and its partner consulting company, ThermoDen.",
   navCta:{label:"Request NDA", to:"/contact?topic=nda"},
   contactTitle:"Talk to ThermoGen", contactLede:"We welcome research partners, pharma and biotech teams, funders and Caribbean institutions. Tell us who you are and what you have in mind.",
   contactTopics:[{id:"partner", label:"Research partnership"}, {id:"industry", label:"Industry or pharma"}, {id:"funding", label:"Funding or investment"}, {id:"nda", label:"Request an NDA and partner access", org:true}, {id:"other", label:"Media or something else"}],
@@ -1281,7 +1281,7 @@ SITE.pages = {
       <p>We are looking for research partners, advisers and funders who want to help us do this properly.</p><div class="actions"><a class="btn" href="#/projections">See our projections</a><a class="btn ghost" href="#/founders">Meet the founders</a></div></div>
     <div class="grid" style="gap:1rem"><div class="partner"><span class="dot">${icon("lab")}</span><p><strong>Research partners.</strong> Universities and laboratories that want to co-design pilots and share capacity.</p></div><div class="partner"><span class="dot">${icon("operations")}</span><p><strong>Industry and pharma.</strong> Teams looking for new genetic parts, leads and data, under NDA.</p></div><div class="partner"><span class="dot">${icon("grant")}</span><p><strong>Funders and institutions.</strong> Grant makers and impact investors backing regional science.</p></div></div></div></section>
   ${wave("var(--paper)", "var(--deep)")}
-  <section class="section dark aw"><div class="wrap split"><div><h2>Need help with your own research?</h2><p class="lede" style="margin-top:1rem">ThermoDen, our sister company, is a scientific consultancy. It helps research teams plan studies, set up laboratory systems, write proposals and train staff.</p></div>
+  <section class="section dark aw"><div class="wrap split"><div><h2>Need help with your own research?</h2><p class="lede" style="margin-top:1rem">ThermoDen, our partner company, is a scientific consultancy. It helps research teams plan studies, set up laboratory systems, write proposals and train staff.</p></div>
     <div style="align-self:center"><a class="btn accent" href="${esc(THERMODEN_URL)}" target="_blank" rel="noopener noreferrer">Visit ThermoDen <span class="sr-only">(opens in a new tab)</span>&#8599;</a></div></div></section>`,
   mount(){
     const layers = [...PROGRAMS, ...FOUNDATIONS], show = i => {
